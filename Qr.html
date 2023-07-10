@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bar Information</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <style>
+        #map {
+            height: 400px;
+            margin-bottom: 20px;
+        }
+        .bar-info {
+            font-weight: bold;
+        
+        }
+        .licensing-status,.license-dates,.years-operating,.bar-owner {
+            font-size: medium;
+            font-family:'Times New Roman', Times, serif;
+         
+        }
+    </style>
+
+</head>
+<body>
+    <div class="bar-info">
+        <h2>Bar Information</h2>
+        <div id="map"></div>
+        <div class="location">
+            <label>Location on Map:</label>
+            <p>Latitude -1.2842082, Longitude 36.824252</p>
+        </div>
+        <div class="licensing-status">
+            <label>Licensing Status:</label>
+            <p>licensed</p>
+        </div>
+        <div class="license-dates">
+            <label>License Acquisition Date:</label>
+            <p>01/09/2022</p>
+            <label>License Expiry Date:</label>
+            <p>01/09/2023</p>
+        </div>
+        <div class="years-operating">
+            <label>Number of Years Operating:</label>
+            <p>5</p>
+        </div>
+        <div class="bar-owner">
+            <label>Bar Owner:</label>
+            <p>John Doe</p>
+        </div>
+    </div>
+
+    <script>
+        var map = L.map('map').setView([-1.2842082, 36.824252], 80); // Replace latitude and longitude with the actual coordinates
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+            maxZoom: 18,
+        }).addTo(map);
+
+        var pinIcon = L.icon({
+            iconUrl: 'pin.png', // Replace 'pin.png' with the path to your custom pin icon
+            iconSize: [32, 32], // Adjust the size of the pin icon as needed
+            iconAnchor: [16, 32], // Adjust the position of the pin icon's anchor point
+        });
+
+        var marker = L.marker([-1.2842082, 36.824252]).addTo(map); // Replace latitude and longitude with the actual coordinates
+        marker.bindPopup("<b>Scratch Bar</b><br>Location: PLUS CODE (PR8F+8P Nairobi)").openPopup(); // Replace [Map location coordinates or address] with the actual information
+    </script>
+</body>
+</html>
